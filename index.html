@@ -19,122 +19,202 @@ button{ background:#0a7f3f; color:white; padding:14px; border:none; border-radiu
 footer{ background:#0a7f3f; color:white; text-align:center; padding:20px; margin-top:40px;}
 ul.programme{ list-style-type: disc; padding-left: 40px; text-align:left; max-width:600px; margin:auto; }
 ul.programme li{ margin-bottom:10px; font-size:16px;}
+.cout{ text-align:center; font-size:18px; margin-bottom:30px;}
 </style>
 </head>
 <body>
 
 <header>
-    <img src="Logo.png" class="logo" alt="Logo Cabinetnilab">
-    <h1>Cabinetnilab</h1>
-    <p>Formation Professionnelle en SIG & Télédétection</p>
-    <p><strong>Lieu :</strong> Niamey</p>
+<img src="Logo.png" class="logo" alt="Logo Cabinetnilab">
+<h1>Cabinetnilab</h1>
+<p>Formation Professionnelle en SIG & Télédétection</p>
+<p><strong>Critères :</strong> Avoir un ordinateur</p>
+<p>Installer les logiciels Arcgis,Qgis, et ENVI</p>
+<p>Avoir une bonne connexion internet</p>
+<p>Etre disponible pendant toute la période de la formation</p>
 </header>
 
 <section>
-    <h2>Début de la formation le 4 avril 2026</h2>
-    <h2>Heure : 20h30 à 22h30</h2>
-    <div class="countdown" id="countdown"></div>
-    <button class="reserve-btn" onclick="document.getElementById('programme').scrollIntoView();">Voir le programme</button>
+<h2>Début de la formation le 4 avril 2026</h2>
+<h2>Heure : 20h30 à 22h30</h2>
+<div class="countdown" id="countdown"></div>
+<button class="reserve-btn" onclick="document.getElementById('programme').scrollIntoView();">Voir le programme</button>
 </section>
 
 <!-- ================= Programme / TDR ================= -->
 <section id="programme">
-    <h2>Programme de la formation</h2>
-    <h3>Programme</h3>
-    <ul class="programme">
-        <li>Introduction aux SIG et télédétection</li>
-        <li>Prise en main de QGIS & ArcGIS</li>
-        <li>Géoréférencement et digitalisation</li>
-        <li>Outils d'Analyse spatiale avec QGIS et Arcgis</li>
-        <li>Prise en main de la plateforme KoboToolbox</li>
-        <li>Se familiariser avec Google Earth Pro</li>
-    </ul>
-    <button class="reserve-btn" onclick="afficherInscription();">Je m'inscris</button>
+
+<h2>Programme de la formation</h2>
+
+<div class="cout">
+<strong>Frais d'inscription : 2000 FCFA</strong>
+</div>
+
+<h3>Programme</h3>
+
+<ul class="programme">
+<li>Introduction aux SIG et télédétection</li>
+<li>Prise en main de QGIS & ArcGIS</li>
+<li>Géoréférencement et digitalisation</li>
+<li>Outils d'Analyse spatiale avec QGIS et Arcgis</li>
+<li>Prise en main de la plateforme KoboToolbox</li>
+<li>Se familiariser avec Google Earth Pro</li>
+</ul>
+
+<button class="reserve-btn" onclick="afficherInscription();">Je m'inscris</button>
+
 </section>
 
-<!-- ================= Section inscription (cachée par défaut) ================= -->
+<!-- ================= Section inscription ================= -->
 <section id="inscription" style="display:none;">
-    <h2>Inscription</h2>
-    <form id="inscriptionForm" action="https://formspree.io/f/mqeddeow" method="POST">
-        <input type="text" name="nom" placeholder="Nom complet" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="text" name="telephone" placeholder="Téléphone (ex: 22797046146)" required>
-        <select name="mode" required>
-            <option value="">Mode de formation</option>
-            <option>En ligne</option>
-        </select>
-        <textarea name="Vos suggestions" placeholder="Vos suggestions"></textarea>
-        <button type="submit">S'inscrire</button>
-    </form>
-    <p class="success" id="successMessage">Inscription réussie ! Vérifiez votre email et WhatsApp.</p>
+
+<h2>Inscription</h2>
+
+<form id="inscriptionForm" action="https://formspree.io/f/mqeddeow" method="POST">
+
+<input type="text" name="nom" placeholder="Nom complet" required>
+
+<input type="email" name="email" placeholder="Email" required>
+
+<input type="text" name="telephone" placeholder="Téléphone (ex: 22797046146)" required>
+
+<select name="mode" required>
+<option value="">Mode de formation</option>
+<option>En ligne</option>
+</select>
+
+<textarea name="Vos suggestions" placeholder="Vos suggestions"></textarea>
+
+<button type="submit">S'inscrire</button>
+
+</form>
+
+<p class="success" id="successMessage">
+Inscription réussie ! Vérifiez votre email et WhatsApp.
+</p>
+
 </section>
 
 <footer>
-    <p>Email : oumaroul@yahoo.fr | WhatsApp : 97 04 61 46</p>
-    <p>© 2026 Cabinetnilab - Niamey</p>
+<p>Email : oumaroul@yahoo.fr | WhatsApp : 97 04 61 46</p>
+<p>© 2026 Cabinetnilab - Niamey</p>
 </footer>
 
 <script>
-// ================= COUNTDOWN =================
-const countdown = document.getElementById("countdown");
-const target = new Date("April 4, 2026 20:30:00").getTime();
-setInterval(function(){
-    let now = new Date().getTime();
-    let diff = target - now;
-    if(diff <= 0){
-        countdown.innerHTML = "La formation a commencé";
-        return;
-    }
-    let days = Math.floor(diff/(1000*60*60*24));
-    let hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-    let minutes = Math.floor((diff%(1000*60*60))/(1000*60));
-    countdown.innerHTML = days+" jours "+hours+" h "+minutes+" min";
-},1000);
 
-// ================= AFFICHER INSCRIPTION =================
-function afficherInscription() {
-    const inscription = document.getElementById('inscription');
-    if (inscription.style.display === 'none') {
-        inscription.style.display = 'block';
-        setTimeout(() => {
-            inscription.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-    } else {
-        inscription.scrollIntoView({ behavior: 'smooth' });
-    }
+// COUNTDOWN
+const countdown = document.getElementById("countdown");
+
+const target = new Date("April 4, 2026 20:30:00").getTime();
+
+setInterval(function(){
+
+let now = new Date().getTime();
+
+let diff = target - now;
+
+if(diff <= 0){
+countdown.innerHTML = "La formation a commencé";
+return;
 }
 
-// ================= FORMSPREE + WHATSAPP =================
+let days = Math.floor(diff/(1000*60*60*24));
+let hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+let minutes = Math.floor((diff%(1000*60*60))/(1000*60));
+
+countdown.innerHTML = days+" jours "+hours+" h "+minutes+" min";
+
+},1000);
+
+
+// AFFICHER INSCRIPTION
+
+function afficherInscription() {
+
+const inscription = document.getElementById('inscription');
+
+if (inscription.style.display === 'none') {
+
+inscription.style.display = 'block';
+
+setTimeout(() => {
+
+inscription.scrollIntoView({ behavior: 'smooth' });
+
+}, 100);
+
+} else {
+
+inscription.scrollIntoView({ behavior: 'smooth' });
+
+}
+
+}
+
+
+// FORMSPREE + WHATSAPP
+
 document.getElementById("inscriptionForm").addEventListener("submit", function(e){
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
 
-    fetch(form.action, {
-        method: form.method,
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-    }).then(response => {
-        if(response.ok){
-            // WhatsApp Admin
-            let texteAdmin = `Nouvelle inscription Cabinetnilab : Nom : ${formData.get('nom')} Email : ${formData.get('email')} Téléphone : ${formData.get('telephone')} Mode : ${formData.get('mode')}`;
-            window.open("https://wa.me/22797046146?text="+encodeURIComponent(texteAdmin), "_blank");
+e.preventDefault();
 
-            // WhatsApp Client
-            let texteClient = `Bonjour ${formData.get('nom')}, Votre inscription est confirmée. Début : 4 Avril 2026 Heure : 20h30 Mode : ${formData.get('mode')} - Cabinetnilab`;
-            window.open("https://wa.me/"+formData.get('telephone')+"?text="+encodeURIComponent(texteClient), "_blank");
+const form = e.target;
 
-            document.getElementById("successMessage").style.display="block";
-            form.reset();
-        } else {
-            response.json().then(data => {
-                alert(data.error || "Une erreur est survenue lors de l'envoi.");
-            })
-        }
-    }).catch(error => {
-        alert("Erreur réseau : " + error);
-    });
+const formData = new FormData(form);
+
+fetch(form.action, {
+
+method: form.method,
+
+body: formData,
+
+headers: { 'Accept': 'application/json' }
+
+}).then(response => {
+
+if(response.ok){
+
+// WhatsApp Admin
+
+let texteAdmin = `Nouvelle inscription Cabinetnilab :
+
+Nom : ${formData.get('nom')}
+
+Email : ${formData.get('email')}
+
+Téléphone : ${formData.get('telephone')}
+
+Mode : ${formData.get('mode')}`;
+
+window.open("https://wa.me/22797046146?text="+encodeURIComponent(texteAdmin), "_blank");
+
+
+// WhatsApp Client
+
+let texteClient = `Bonjour ${formData.get('nom')},
+
+Votre inscription est confirmée.
+
+Début : 4 Avril 2026
+
+Heure : 20h30
+
+Mode : ${formData.get('mode')}
+
+Cabinetnilab`;
+
+window.open("https://wa.me/"+formData.get('telephone')+"?text="+encodeURIComponent(texteClient), "_blank");
+
+document.getElementById("successMessage").style.display="block";
+
+form.reset();
+
+}
+
 });
+
+});
+
 </script>
 
 </body>
