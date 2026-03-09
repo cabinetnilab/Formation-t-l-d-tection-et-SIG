@@ -4,44 +4,124 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CabinetNiGlab - Formation SIG & Télédétection</title>
+
 <style>
 body{ margin:0; font-family:Arial,sans-serif; background:#f4f9f4; scroll-behavior:smooth;}
 header{ background:linear-gradient(135deg,#0a7f3f,#06632f); color:white; text-align:center; padding:60px 20px;}
 .logo{ width:160px; margin-bottom:15px; animation:float 3s ease-in-out infinite;}
-@keyframes float{0%{transform:translateY(0);}50%{transform:translateY(-10px);}100%{transform:translateY(0);}}
+
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
+}
+
 section{ padding:60px 20px; max-width:950px; margin:auto;}
-h2, h3{ color:#0a7f3f; text-align:center; margin-bottom:30px;}
+
+h2,h3{ color:#0a7f3f; text-align:center; margin-bottom:30px;}
+
 .countdown{ font-size:28px; font-weight:bold; color:#0a7f3f; text-align:center; margin:20px 0;}
-.reserve-btn{ display:block; margin:20px auto; background:#0a7f3f; color:white; padding:15px 30px; border:none; border-radius:8px; cursor:pointer;}
-input,select,textarea{ width:100%; padding:12px; margin-top:10px; margin-bottom:15px; border-radius:6px; border:1px solid #ccc;}
-button{ background:#0a7f3f; color:white; padding:14px; border:none; border-radius:6px; cursor:pointer; width:100%; font-size:16px;}
-.success{ color:green; text-align:center; display:none; margin-top:15px; font-weight:bold;}
-footer{ background:#0a7f3f; color:white; text-align:center; padding:20px; margin-top:40px;}
-ul.programme{ list-style-type: disc; padding-left: 40px; text-align:left; max-width:600px; margin:auto; }
-ul.programme li{ margin-bottom:10px; font-size:16px;}
-.cout{ text-align:center; font-size:18px; margin-bottom:30px;}
+
+.reserve-btn{
+display:block;
+margin:20px auto;
+background:#0a7f3f;
+color:white;
+padding:15px 30px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+input,select,textarea{
+width:100%;
+padding:12px;
+margin-top:10px;
+margin-bottom:15px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+button{
+background:#0a7f3f;
+color:white;
+padding:14px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+width:100%;
+font-size:16px;
+}
+
+.success{
+color:green;
+text-align:center;
+display:none;
+margin-top:15px;
+font-weight:bold;
+}
+
+footer{
+background:#0a7f3f;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:40px;
+}
+
+ul.programme{
+list-style-type:disc;
+padding-left:40px;
+text-align:left;
+max-width:600px;
+margin:auto;
+}
+
+ul.programme li{
+margin-bottom:10px;
+font-size:16px;
+}
+
+.cout{
+text-align:center;
+font-size:18px;
+margin-bottom:30px;
+}
 </style>
 </head>
+
 <body>
 
 <header>
-<img src="Logo.png" class="logo" alt="Logo CabinetNiGlab">
+<img src="Logo.png" class="logo">
+
 <h1>CabinetNiGlab</h1>
+
 <p>Formation Professionnelle en SIG & Télédétection</p>
+
 <p><strong>Critères :</strong> Avoir un ordinateur</p>
-<p>Installer les logiciels Arcgis,Qgis, et ENVI</p>
+<p>Installer les logiciels Arcgis, Qgis et ENVI</p>
 <p>Avoir une bonne connexion internet</p>
 <p>Etre disponible pendant toute la période de la formation</p>
+
 </header>
 
 <section>
+
 <h2>Début de la formation le 4 avril 2026</h2>
 <h2>Heure : 20h30 à 22h30</h2>
+
 <div class="countdown" id="countdown"></div>
-<button class="reserve-btn" onclick="document.getElementById('programme').scrollIntoView();">Voir le programme</button>
+
+<button class="reserve-btn"
+onclick="document.getElementById('programme').scrollIntoView();">
+
+Voir le programme
+
+</button>
+
 </section>
 
-<!-- ================= Programme / TDR ================= -->
 <section id="programme">
 
 <h2>Programme de la formation</h2>
@@ -53,157 +133,174 @@ ul.programme li{ margin-bottom:10px; font-size:16px;}
 <h3>Programme</h3>
 
 <ul class="programme">
+
 <li>Introduction aux SIG et télédétection</li>
 <li>Prise en main de QGIS & ArcGIS</li>
 <li>Géoréférencement et digitalisation</li>
 <li>Outils d'Analyse spatiale avec QGIS et Arcgis</li>
 <li>Prise en main de la plateforme KoboToolbox</li>
 <li>Se familiariser avec Google Earth Pro</li>
+
 </ul>
 
-<button class="reserve-btn" onclick="afficherInscription();">Je m'inscris</button>
+<button class="reserve-btn"
+onclick="afficherInscription();">
+
+Je m'inscris
+
+</button>
 
 </section>
 
-<!-- ================= Section inscription ================= -->
 <section id="inscription" style="display:none;">
 
 <h2>Inscription</h2>
 
-<form id="inscriptionForm" action="https://formspree.io/f/mqeddeow" method="POST">
+<form id="inscriptionForm"
+action="https://formspree.io/f/mqeddeow"
+method="POST">
 
-<input type="text" name="nom" placeholder="Nom complet" required>
+<input type="text"
+name="nom"
+placeholder="Nom complet"
+required>
 
-<input type="email" name="email" placeholder="Email" required>
+<input type="email"
+name="email"
+placeholder="Email"
+required>
 
-<input type="text" name="telephone" placeholder="Téléphone (ex: 22797046146)" required>
+<input type="text"
+name="telephone"
+placeholder="Téléphone (ex: 22797046146)"
+required>
+
+<select name="niveau" required>
+<option value="">Niveau d'étude</option>
+<option>BAC</option>
+<option>BAC +2</option>
+<option>Licence</option>
+<option>Master</option>
+<option>Doctorat</option>
+<option>Autre</option>
+</select>
 
 <select name="mode" required>
 <option value="">Mode de formation</option>
 <option>En ligne</option>
 </select>
 
-<textarea name="Vos suggestions" placeholder="Vos suggestions"></textarea>
+<textarea name="suggestions" placeholder="Vos suggestions"></textarea>
 
 <button type="submit">S'inscrire</button>
 
 </form>
 
 <p class="success" id="successMessage">
-Inscription réussie ! Vérifiez votre email et WhatsApp.
+Inscription réussie ! Vérifiez votre WhatsApp.
 </p>
 
 </section>
 
 <footer>
+
 <p>Email : oumaroul@yahoo.fr | WhatsApp : 97 04 61 46</p>
-<p>© 2026 Cabinetnilab - Niamey</p>
+
+<p>© 2026 CabinetNiGlab - Niamey</p>
+
 </footer>
 
 <script>
 
 // COUNTDOWN
-const countdown = document.getElementById("countdown");
+const countdown=document.getElementById("countdown");
 
-const target = new Date("April 4, 2026 20:30:00").getTime();
+const target=new Date("April 4, 2026 20:30:00").getTime();
 
 setInterval(function(){
 
-let now = new Date().getTime();
+let now=new Date().getTime();
 
-let diff = target - now;
+let diff=target-now;
 
-if(diff <= 0){
-countdown.innerHTML = "La formation a commencé";
+if(diff<=0){
+countdown.innerHTML="La formation a commencé";
 return;
 }
 
-let days = Math.floor(diff/(1000*60*60*24));
-let hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-let minutes = Math.floor((diff%(1000*60*60))/(1000*60));
+let days=Math.floor(diff/(1000*60*60*24));
+let hours=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+let minutes=Math.floor((diff%(1000*60*60))/(1000*60));
 
-countdown.innerHTML = days+" jours "+hours+" h "+minutes+" min";
+countdown.innerHTML=days+" jours "+hours+" h "+minutes+" min";
 
 },1000);
 
 
-// AFFICHER INSCRIPTION
+// afficher formulaire
 
-function afficherInscription() {
+function afficherInscription(){
 
-const inscription = document.getElementById('inscription');
+const inscription=document.getElementById("inscription");
 
-if (inscription.style.display === 'none') {
+inscription.style.display="block";
 
-inscription.style.display = 'block';
-
-setTimeout(() => {
-
-inscription.scrollIntoView({ behavior: 'smooth' });
-
-}, 100);
-
-} else {
-
-inscription.scrollIntoView({ behavior: 'smooth' });
-
-}
+setTimeout(()=>{
+inscription.scrollIntoView({behavior:"smooth"});
+},100);
 
 }
 
 
-// FORMSPREE + WHATSAPP
+// formulaire
 
-document.getElementById("inscriptionForm").addEventListener("submit", function(e){
+document.getElementById("inscriptionForm")
+.addEventListener("submit",function(e){
 
 e.preventDefault();
 
-const form = e.target;
+const form=e.target;
+const formData=new FormData(form);
 
-const formData = new FormData(form);
+fetch(form.action,{
+method:"POST",
+body:formData,
+headers:{'Accept':'application/json'}
+})
 
-fetch(form.action, {
-
-method: form.method,
-
-body: formData,
-
-headers: { 'Accept': 'application/json' }
-
-}).then(response => {
+.then(response=>{
 
 if(response.ok){
 
-// WhatsApp Admin
+let nom=formData.get("nom");
+let email=formData.get("email");
+let telephone=formData.get("telephone");
+let niveau=formData.get("niveau");
+let mode=formData.get("mode");
 
-let texteAdmin = `Nouvelle inscription Cabinetnilab :
+let texteAdmin=`Nouvelle inscription CabinetNiGlab :
 
-Nom : ${formData.get('nom')}
+Nom : ${nom}
+Email : ${email}
+Téléphone : ${telephone}
+Niveau : ${niveau}
+Mode : ${mode}`;
 
-Email : ${formData.get('email')}
+window.open("https://wa.me/22797046146?text="+encodeURIComponent(texteAdmin),"_blank");
 
-Téléphone : ${formData.get('telephone')}
-
-Mode : ${formData.get('mode')}`;
-
-window.open("https://wa.me/22797046146?text="+encodeURIComponent(texteAdmin), "_blank");
-
-
-// WhatsApp Client
-
-let texteClient = `Bonjour ${formData.get('nom')},
+let texteClient=`Bonjour ${nom},
 
 Votre inscription est confirmée.
 
+Niveau : ${niveau}
+
 Début : 4 Avril 2026
-
 Heure : 20h30
+Mode : ${mode}
 
-Mode : ${formData.get('mode')}
+CabinetNiGlab`;
 
-Cabinetnilab`;
-
-window.open("https://wa.me/"+formData.get('telephone')+"?text="+encodeURIComponent(texteClient), "_blank");
+window.open("https://wa.me/"+telephone+"?text="+encodeURIComponent(texteClient),"_blank");
 
 document.getElementById("successMessage").style.display="block";
 
