@@ -115,9 +115,7 @@ margin-bottom:30px;
 
 <button class="reserve-btn"
 onclick="document.getElementById('programme').scrollIntoView();">
-
 Voir le programme
-
 </button>
 
 </section>
@@ -133,21 +131,21 @@ Voir le programme
 <h3>Programme</h3>
 
 <ul class="programme">
-
 <li>Introduction aux SIG et télédétection</li>
 <li>Prise en main de QGIS & ArcGIS</li>
 <li>Géoréférencement et digitalisation</li>
 <li>Outils d'Analyse spatiale avec QGIS et Arcgis</li>
 <li>Prise en main de la plateforme KoboToolbox</li>
 <li>Se familiariser avec Google Earth Pro</li>
-
 </ul>
 
-<button class="reserve-btn"
-onclick="afficherInscription();">
+<!-- MESSAGE DE CLÔTURE -->
+<p id="clotureMessage" style="display:none; color:red; text-align:center; font-weight:bold;">
+Les inscriptions sont clôturées. Merci pour votre intérêt.
+</p>
 
+<button class="reserve-btn" onclick="afficherInscription();" id="btnInscription">
 Je m'inscris
-
 </button>
 
 </section>
@@ -160,20 +158,9 @@ Je m'inscris
 action="https://formspree.io/f/mqeddeow"
 method="POST">
 
-<input type="text"
-name="nom"
-placeholder="Nom complet"
-required>
-
-<input type="email"
-name="email"
-placeholder="Email"
-required>
-
-<input type="text"
-name="telephone"
-placeholder="Téléphone (ex: 22797046146)"
-required>
+<input type="text" name="nom" placeholder="Nom complet" required>
+<input type="email" name="email" placeholder="Email" required>
+<input type="text" name="telephone" placeholder="Téléphone (ex: 22797046146)" required>
 
 <select name="niveau" required>
 <option value="">Niveau d'étude</option>
@@ -203,26 +190,24 @@ Inscription réussie ! Vérifiez votre WhatsApp.
 </section>
 
 <footer>
-
 <p>Email : oumaroul@yahoo.fr | WhatsApp : 97 04 61 46</p>
-
 <p>© 2026 CabinetNiGlab - Niamey</p>
-<p>Numéro Nita pour le paiement de frais d'inscription : 82 06 73 72</p>
-<p>Date limite : 22 mars 2026 à partir de 12h00 GMT</p>
-
+<p>Numéro Nita pour paiement : 82 06 73 72</p>
+<p>Date limite : 22 mars 2026 à 12h00 GMT</p>
 </footer>
 
 <script>
 
+// DATE LIMITE
+const deadline = new Date("March 22, 2026 12:00:00 GMT").getTime();
+
 // COUNTDOWN
 const countdown=document.getElementById("countdown");
-
 const target=new Date("April 4, 2026 20:30:00").getTime();
 
 setInterval(function(){
 
 let now=new Date().getTime();
-
 let diff=target-now;
 
 if(diff<=0){
@@ -239,11 +224,22 @@ countdown.innerHTML=days+" jours "+hours+" h "+minutes+" min";
 },1000);
 
 
-// afficher formulaire
-
+// AFFICHER INSCRIPTION
 function afficherInscription(){
 
-const inscription=document.getElementById("inscription");
+let now = new Date().getTime();
+
+const inscription = document.getElementById("inscription");
+const message = document.getElementById("clotureMessage");
+
+if(now > deadline){
+
+inscription.style.display = "none";
+message.style.display = "block";
+message.scrollIntoView({behavior:"smooth"});
+
+return;
+}
 
 inscription.style.display="block";
 
@@ -254,8 +250,25 @@ inscription.scrollIntoView({behavior:"smooth"});
 }
 
 
-// formulaire
+// BLOQUER AUTOMATIQUEMENT
+window.onload = function(){
 
+let now = new Date().getTime();
+
+if(now > deadline){
+
+document.getElementById("btnInscription").disabled = true;
+document.getElementById("btnInscription").style.background = "gray";
+document.getElementById("btnInscription").style.cursor = "not-allowed";
+
+document.getElementById("clotureMessage").style.display="block";
+
+}
+
+};
+
+
+// FORMULAIRE
 document.getElementById("inscriptionForm")
 .addEventListener("submit",function(e){
 
